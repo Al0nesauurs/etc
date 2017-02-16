@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class itemController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    // Use this for initialization
+    GameObject item;
+    void Start () {
+       item= GameObject.Find("Item(Clone)");
 	}
 	
 	// Update is called once per frame
@@ -15,8 +16,12 @@ public class itemController : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
-        SpaceShipController.GetItem = true;
-        Debug.Log("TRIGGER ME SO BAD");
-        Destroy(this.gameObject);
+        if (other != item)
+        {
+            SpaceShipController.GetItem = true;
+            Debug.Log("TRIGGER ME SO BAD");
+
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -5,14 +5,14 @@ using UnityEngine;
 public class enemyController : MonoBehaviour {
     public AudioClip explode;
     public int force = 1;
-    GameObject Player,Building;
+    GameObject Player,Building,Enemy;
     float t = 0;
     // Use this for initialization
     void Start () {
         // this.gameObject.GetComponent<AudioSource>().clip = explode;
         Player = GameObject.Find("Player");
         Building = GameObject.Find("MyBuilding");
-        
+        Enemy = GameObject.Find("Enemy 1(Clone)");
 
     }
 
@@ -32,6 +32,7 @@ public class enemyController : MonoBehaviour {
             if (t > 5)
                 Application.Quit();
         }
-        Destroy(this.gameObject);
+        if(other !=Enemy)
+         Destroy(this.gameObject);
     }
 }
