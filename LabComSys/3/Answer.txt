@@ -1,0 +1,10 @@
+5710503495 Parut Singhapun
+1.The number of instructions : 4045
+2.Overall effective CPI.     : 7243.51
+
+
+CPI = (Execution time*Frequency)/Instruction Count
+    = (0.01s*2.93GHz)/4045
+    = 7243.51
+
+Specification : Intel Core i5 2.93 GHz
