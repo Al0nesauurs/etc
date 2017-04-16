@@ -1,0 +1,11 @@
+addr="www.textfiles.com/etext/FICTION/"
+source=$(curl -s www.textfiles.com/etext/FICTION/ | awk '{print $7 "\t" $4}' |
+sort -n |
+sed -e 's/<br><td>//g' | 
+sed -e 's/HREF="//g' |
+sed -e 's/[<A/>]//g' | 
+sed -e 's/["].*//g' | 
+awk 'END{print $2}')
+
+echo "file name : $source"
+echo "Link : $addr$source"

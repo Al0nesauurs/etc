@@ -1,0 +1,3 @@
+grep -io -w 'this\|these' lesms10.txt | wc -w
+sed -i 's/\<[Aa]c[A-Za-z]*d\>/''/g' new.txt
+
