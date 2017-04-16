@@ -1,0 +1,7 @@
+addr="www.textfiles.com/etext/FICTION/"
+source=$(curl -s www.textfiles.com/etext/FICTION/ | grep -wo -e 'HREF=".*"' |cut -d "\"" -f2)
+
+for i in $source; do
+	curl -s www.textfiles.com/etext/FICTION/ $i>>allbooks.txt
+	echo "file name $i from $addr$i"
+done
