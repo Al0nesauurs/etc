@@ -1,5 +1,5 @@
 #include<stdio.h>
-#Parut Singhapun 5710503495
+
 int main(){
   int array[1000], position, num, index=0, count=0;
   FILE *file;
