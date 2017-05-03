@@ -1,22 +1,27 @@
 หมวดวิชาศึกษาทั่วไป ไม่น้อยกว่า 30 หน่วยกิต
 
 กลุ่มวิชาวิทยาศาสตร์และคณิตศาสตร์ 10 หน่วยกิต
-Compro
-Healthforlife
-Introcom
-Inno
+Compro (3)
+Healthforlife (3)
+Introcom (3)
+Inno (ๅ)
 
 กลุ่มวิชาภาษา 12 หน่วยกิต
-ENG1-4 ไทยสื่อสาร 
+ENG1 (3)
+ENG2 (3)
+ENG3 (3)
+ENG4 (3)
+Thai-Com (3)
 
 กลุ่มวิชาสังคมศาสตร์ 3 หน่วยกิต
-Econ
+Econ (3)
 
 กลุ่มวิชามนุษยศาสตร์ 3 หน่วยกิต
-ART of LIVEING
+ART of LIVING (3)
 
 กลุ่มวิชาพลศึกษา 2 หน่วยกิต
-Volley Track&Field
+Volley  (1)
+Track&Field (1)
 
 หมวดวิชาเฉพาะ ไม่น้อยกว่า 105 หน่วยกิต
 	วิชาแกน 21 หน่วยกิต
@@ -43,7 +48,7 @@ Volley Track&Field
 		DataCom(3)
 		OS(3)
 		Database(3)
-		LAW(3)
+		*LAW(3)
 		Network(3)
 		*Project-pre(2)
 		*Project(2)
