@@ -1,0 +1,74 @@
+หมวดวิชาศึกษาทั่วไป ไม่น้อยกว่า 30 หน่วยกิต
+
+กลุ่มวิชาวิทยาศาสตร์และคณิตศาสตร์ 10 หน่วยกิต
+Compro
+Healthforlife
+Introcom
+Inno
+
+กลุ่มวิชาภาษา 12 หน่วยกิต
+ENG1-4 ไทยสื่อสาร 
+
+กลุ่มวิชาสังคมศาสตร์ 3 หน่วยกิต
+Econ
+
+กลุ่มวิชามนุษยศาสตร์ 3 หน่วยกิต
+ART of LIVEING
+
+กลุ่มวิชาพลศึกษา 2 หน่วยกิต
+Volley Track&Field
+
+หมวดวิชาเฉพาะ ไม่น้อยกว่า 105 หน่วยกิต
+	วิชาแกน 21 หน่วยกิต
+		Prob-Stat (3)
+		Signal (3)
+		Drawing (3)
+		MatSci (3)
+		FundChem (3)
+		Math I (3)
+		Math II (3)
+		Math III (3)
+		PHY I (3)
+		PHY II (3)
+		LabPHY I (1)
+		LabPHY II (1)
+		LabFundChem (1)
+	วิชาเฉพาะบังคับ 66 หน่วยกิต
+		Discrete(3)
+		ADT(3)
+		Theory(3)
+		Digital(3)
+		Comarch(3)
+		Algorithm(3)
+		DataCom(3)
+		OS(3)
+		Database(3)
+		LAW(3)
+		Network(3)
+		*Project-pre(2)
+		*Project(2)
+		GenElec I(3)
+		GenElec II(3)
+		*BAYMAC (3)		
+		SoftEng(4)		
+		EXEED(1)
+		LabGenElec(1)
+		*Intern(-)
+		Comsys(1)
+		LogicLab(1)
+		Practicum(1)
+		OOP(1)
+		Probsolve(1)
+	วิชาเฉพาะเลือก 18 หน่วยกิต
+		SocialDataMining
+		Enterprise
+		Gamedev
+		*
+		*
+		*
+
+หมวดวิชาเลือกเสรี ไม่น้อยกว่า 6 หน่วยกิต
+	Logic (3)
+	Philosophy (3)
+
+*การฝึกงาน ไม่น้อยกว่า 240 ชั่วโมง (ไม่นับหน่วยกิต)
