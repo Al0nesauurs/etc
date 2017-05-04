@@ -706,7 +706,7 @@ configure: failed program was:
 configure:4981: result: no
 configure:4879: checking whether pthreads work without any flags
 configure:4972: g++ -o conftest     conftest.c   >&5
-/tmp/ccTctESR.o: In function `main':
+/tmp/ccOZ7h6F.o: In function `main':
 conftest.c:(.text+0x4f): undefined reference to `pthread_create'
 conftest.c:(.text+0x60): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status

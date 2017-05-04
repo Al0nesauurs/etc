@@ -1,0 +1,216 @@
+$date
+     May 04, 2017       22:23:09
+$end
+
+$version
+ SystemC 2.3.1-Accellera --- May  4 2017 21:58:21
+$end
+
+$timescale
+     1 us
+$end
+
+$scope module SystemC $end
+$var wire    1  aaaaa  reset       $end
+$var wire    1  aaaab  clock       $end
+$var wire   16  aaaac  counter_value [15:0]  $end
+$var wire    8  aaaad  BCD_High [7:0]  $end
+$var wire    8  aaaae  BCD_low [7:0]  $end
+$var wire   16  aaaaf  internal_count [15:0]  $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+1aaaaa
+1aaaab
+b1 aaaac
+b0 aaaad
+b1 aaaae
+b1 aaaaf
+$end
+
+#5
+0aaaab
+
+#10
+1aaaab
+b10 aaaac
+b10 aaaae
+b10 aaaaf
+
+#15
+0aaaab
+
+#17
+0aaaaa
+
+#20
+1aaaab
+b0 aaaac
+b0 aaaae
+b0 aaaaf
+
+#25
+0aaaab
+
+#27
+1aaaaa
+
+#30
+1aaaab
+b1 aaaac
+b1 aaaae
+b1 aaaaf
+
+#35
+0aaaab
+
+#40
+1aaaab
+b10 aaaac
+b10 aaaae
+b10 aaaaf
+
+#45
+0aaaab
+
+#50
+1aaaab
+b11 aaaac
+b11 aaaae
+b11 aaaaf
+
+#55
+0aaaab
+
+#60
+1aaaab
+b100 aaaac
+b100 aaaae
+b100 aaaaf
+
+#65
+0aaaab
+
+#70
+1aaaab
+b101 aaaac
+b101 aaaae
+b101 aaaaf
+
+#75
+0aaaab
+
+#80
+1aaaab
+b110 aaaac
+b110 aaaae
+b110 aaaaf
+
+#85
+0aaaab
+
+#90
+1aaaab
+b111 aaaac
+b111 aaaae
+b111 aaaaf
+
+#95
+0aaaab
+
+#100
+1aaaab
+b1000 aaaac
+b1000 aaaae
+b1000 aaaaf
+
+#105
+0aaaab
+
+#110
+1aaaab
+b1001 aaaac
+b1001 aaaae
+b1001 aaaaf
+
+#115
+0aaaab
+
+#120
+1aaaab
+b1010 aaaac
+b1 aaaad
+b0 aaaae
+b1010 aaaaf
+
+#125
+0aaaab
+
+#130
+1aaaab
+b1011 aaaac
+b1 aaaae
+b1011 aaaaf
+
+#135
+0aaaab
+
+#140
+1aaaab
+b1100 aaaac
+b10 aaaae
+b1100 aaaaf
+
+#145
+0aaaab
+
+#150
+1aaaab
+b1101 aaaac
+b11 aaaae
+b1101 aaaaf
+
+#155
+0aaaab
+
+#160
+1aaaab
+b1110 aaaac
+b100 aaaae
+b1110 aaaaf
+
+#165
+0aaaab
+
+#170
+1aaaab
+b1111 aaaac
+b101 aaaae
+b1111 aaaaf
+
+#175
+0aaaab
+
+#180
+1aaaab
+b10000 aaaac
+b110 aaaae
+b10000 aaaaf
+
+#185
+0aaaab
+
+#190
+1aaaab
+b10001 aaaac
+b111 aaaae
+b10001 aaaaf
+
+#195
+0aaaab
+
