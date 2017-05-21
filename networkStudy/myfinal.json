@@ -1,0 +1,126 @@
+RIP เป็นการทำroutingใน Intradomain protocol ชนิด Distance vector routing
+มีกระบวนการทำงานคือในRouterจะพยายามแลกเปลี่ยนข้อมูลของRouting TableกับRouterที่ต่ออยู่รอบข้าง
+โดยคล้ายกระบวนการบอกต่อๆกันไปเรื่อยๆ โดยหากมีการupdateข้อมูลขึ้นก็จะตรวจสอบว่าข้อมูลใหม่ที่จะupdateหรือ
+เข้ามานั้นดีกว่าเดิมหรือไม่หากดีกว่าก็จะupdate หากสายชำรุดสูญหายก็จะเกิดการหาเส้นทางใหม่ทำให้ต้องส่งการupdate
+ไปใหม่ทั้งหมดทำให้เสียconvergence timeมากจึงเหมาะกับnetworkวงไม่ใหญ่มากและไม่มีการเปลี่ยนแปลงบ่อย
+โดยวิธีการคำนวน costในเส้นทางนั้นคำนวนจากhop count เป็น UDP
+อาจเกิดกระบวนการ count to infinityได้เลยต้องมี max hop = 15 
+RIP V1 เป็นClassful แต่ RIPV2 เป็น Classless
+
+
+OSPF เป็นการroutingในintradomain ชนิด linkstage routing 
+กระบวนการทำงานจะทำการส่ง LSP ไปยังRouterทุกตัว(flooding)ที่อยู่ในAreaเดียวกัน โดยLSPจะคุยกันด้วยID
+โดยรวมแล้วข้อมูลในเครือข่ายก็จะมีสูงมากทำให้ไม่เหมาะกับเครือข่ายขนาดใหญ่มากนักเพราะมี Informationมหาศาล
+โดยแต่ละRouterจะดูที่costของแต่ละเส้่นทางไม่ได้ดูที่Hop countแล้วจึงใช้อัลกอริธึม shortest path dijkstra algorithm
+ในการหาเส้นทางแล้วทำเป็นตาราง routing table และหากมีการเปลี่ยนแปลงในnetwork ก็จะสามารถเปลี่ยน
+เปลืองข้อมูลในrouting tableได้โดยการrun dijkstra ใหม่เท่านั้นทำให้ไม่เสีย convergence time
+โดย ospf จะมี Designated routerอยู่คอยบอกว่ามีการ updateเส้นทางหรือไม่ทำให้ traffic น้อยลง
+ค้ลาย UDP หายได้ไม่เป็นไร ข้อเสียคือ informationที่แต่ละโหนดจะเยอะมากขยายไม่ดีการFloodingใช้
+Bandwithเยอะ และถ้ามีการประกาศผิดก็จะผิดไปทั้งระบบเลย 
+
+
+IS-IS เป็นการroutingในintradomain ชนิด linkstage routing 
+กระบวนทำงานจะการกำหนด routerให้มี3ชนิดคือ L1 L2 และ L1/L2 โดยL1คือRouterที่เป็น
+Routerที่คุยอยู่แต่กับในวงพื้นที่ตัวเองเท่านั้นคล้าย stub network L2จะเป็นrouterที่คุยระหว่างArea
+ส่วนL1/L2คือRouterที่ทำหน้าที่ทั้งL1และL2คือคุยทั้งภายในวงตัวเองและนอกวงตัวเองคล้าย OSPF Area border router
+โดย IsIsเหมาะกับ IPV6และรองรับTCPและCLNP 
+Format จะแบ่งหลักๆเป็นสามส่วนคือ AREA:System ID:NSEL โดยจะfiX NSELไว้เป็น 00
+ในterminalจะขึ้น i L1หรือL2แบ๊ะๆไรด้วยต้องดูว่ามันผ่านตัวไหนตัวแรกอยู่ในL1หรือL2
+
+
+BGP เป็นการ routing แบบExterior คือการแลกเปลี่ยนข้อมูลระหว่างAS แบบPath vector
+โดยในRouting tableที่ได้จะเป็นpathที่จะไปถึงผ่าน ASใดบ้าง โดยจะเป็นจุดที่สำคัญมากซึ่งหากเกิดปัญหา
+Configผิดอาจทำให้ไม่สามารถออกไปยังinternetได้เลยทั้งAS เพราะเป็นBorder router
+BGPจะเชื่อมกันโดยใช้ TCP คือต้องมี Reliableและต้องไม่เป็น loop และ based on policyด้วย
+โดยrouterแต่ละตัวจะสร้าง linkหากันเรียก neighbors หรือpeerและแต่ละrouterจะเป็น BGP Speaker
+และหลังจากการทำTCPเรียบร้อยแล้วก็จะเริ่มแลกเปลี่ยนข้อมูลกัน
+
+
+IPV6Routing
+จะแตกต่างจาก IPV4ตรงที่จะมี L(Local)เพิ่มขึ้นมาในterminal ด้วยมีไว้ให้ใช้ทำCEF
+RIPng จะคล้ายกับ RIPv2ของIPv4 ส่วนOSPF3คือOSPFแบบmulticastได้
+ 
+Transport layerแบ่งเป็นUDP TCP SCTP RTP
+มีport แบบ Register by IANA Wellknown Dynamic/private
+UDP เป็นprotocol 16 แบบ connectless เชื่อมต่อแบบเน้นการส่งที่ไว Headerเพียง8Byteใช้แต่
+src des port checksum และมีการทำ pseudo header เพื่อจะนำ ip จากชั้นnetworkมาใช้คำนวน
+แล้วตัดทิ้งเมื่อคำนวนเสร็จแล้วทำให้ไม่เสีย header การchecksumทำเพราะเวลาส่งแล้วข้อมูลอาจหายได้
+เลยต้องนำมาcheck sumด้วยโดยการทำต้องset 0 ให้pseudo headerก่อนแล้วค่อยไปคำนวน หากเจอ error
+ก็ขึ้นกับpolicyที่กำหนด UDP Lite คือ UDP ที่นำchecksumออกและจะไม่ทิ้งpackerที่เสียหายเลยทำให้
+เบากว่าUDPปกติ
+
+UDP เป็นprtocol ในการส่งข้อมูลชนิดหนึ่งที่เน้นความไวของการส่งเป็นหลักโดยจะมี Headerเพียง 8 Byte ซึ่งจะมี
+src port des port check sum อีกอัน ซึ่งในการส่งข้อมูลก็จะมีการทำ pseudo headerขึ้นมา
+แทนที่จะใส่ ip ไปใหม่ทั้งหมดทำให้headerมีขนาดเล็กลง แต่ก็ยังมี Checksum อยู่แม้ว่า Datalink layer
+จะมีchecksumแล้วก็ตามเนื่องจาก udp ข้อมูลอาจหล่นหายได้เลยต้องมีการ checksum อีกเพื่อให้ไดข้อมูลที่ถูกต้อง
+หากข้อมูลที่ได้ไม่ถูกต้องก็จะdropทิ้งไป โดยมี UDP แบบเบามากคือ UDP Lite เป็นUDPที่ตัดchecksumออกไป
+แล้วใส่0 ลงไปเพื่อให้มีความเร็ซในการส่งสูงมากขึ้นไปอีกโดยจะเก็บข้อมูลทั้งหมดรวมทั้งข้อมูลที่เสียหายด้วย
+
+TCP เป็น protocolชนิดหนึ่งที่ใช้การส่งข้อมูลโดยเน้นความแน่นอนเป็นหลัก โดยจะมีheaderขนาด 20byte
+ทำThree way handshake กันระหว่างผู้ส่งกับผู้รับ คือ Serverจะเปิด portไว้แล้วให้ client ส่งrequest 
+join มา เมื่อ client ส่งrequest join ไป serverก็จะตอบackกลับ แล้วsync แล้วclient
+ก็จะackตอบserverถือเป็นการเสร้จสิ้นกระบวนการ Three way hand shakeและเมื่อทำการตกลงรับส่งข้อมูลกันแล้ว
+และในการส่งข้อมูล แต่การส่งอาจเกิดsilly window syndrome ได้หากใช้flagทำให้ส่งข้อมูลทีละๆน้อยๆทำ
+ให้overheadสูง urgent dataคือข้อมูลที่ถูกmark ว่ามีความสำคัญสูงต้องรีบส่งในทันที
+port ที่ควรรู้ 20 21 23  25 53 80
+
+SCTP คือ TCPที่พยายามจ่งส่งstreamsหลายๆคู่พร้อมกันแต่ต้องไปในทิศทางเดียวกันทำไปเพื่อลด overhead
+โดยจะมี headerและCHUNKมีheader 12byteและ chunk2byteheadที่เหลือคือdata
+ทำ4 ways handshakeมีinit2cookie2hearbeat2 cookieเอาไว้ใช้auth MACสรุป
+คือทำเหมือน tcpแต่ส่งเป็นchunk แต่ละchunkมีnumberของตัวเอง
+
+RTPเน้นเร็วเอาให้เร็วกว่า UDPโดยจะมีTimeStampคอยบอกว่าถ้าเจอแบบนี้ต้องทำไงๆ
+
+ATM PacketsizeในNetworkนั้นมีความหลากหลาย ดังนั้นกรณีจะส่งอาจเจอpacketที่ใหญ่ทำให้ตัวอื่นต้องรอได้
+Atmเลยเข้ามาจัดการหั่นpaceketให้เป็นขนาดเท่าๆกันหมดเป็นcellขนาด 53 B ในการส่งเป็นท่อ Vc<Vp<Tp 
+กลางทางดูที่Vpปลายทางดูที่Vcแต่ข้อเสียคือหากไฟล์ใหญ่ๆมันก็ไม่คุ้มที่จะตัดเล็กๆละส่งเพราะเสียoverheadเยอะ
+
+MPLS อยู่ระหว่างlayer2 และlayer3 supportหลากหลายชนิดทำการแทรกตัวเองไปอยู่หน้าNetwork
+LayerHeader ขนาด4Byte โดยrouterที่ใช้จะแบ่งเป็นLSR LER LERทำหน้าที่แปะTag และถอดtag
+LSRทำหน้าที่Switchingคือดู Tagแล้วส่งต่อ การSet up คือส่งudpไปก่อนแล้วTCP setup แล้วก็label
+request การทำงานคือสร้าง labelแล้วก็สร้าง tableขึ้นมาเป็น LIB คือตอนแรกสุดก็ส่งไปปกติก่อนแต่ต่อนหลังจะ
+มีการทำmappingกับlabelแล้วส่งกลับมาทำให้ส่งครั้งต่อๆไปเร็วขึ้นมากๆ ip จะหมดความหมายไปดูแต่tagก็พอแล้ว
+ข้อดีคือเร็วขึ้นและ support serviceหลากหลายข้อเสียคือrouterต้องใหม่ๆหน่อยกับheaderที่เพิ่มนิดหน่อย4Byte
+
+Application 
+Client-serverจะทำการติดต่อกันโดยการเชื่อมต่อนั้นมีสองประเภทคือ iterativeคือแบบส่งได้ทีละคนและแบบ
+Concurrent คือส่งพร้อมกันหลายๆคนได้ Connectless คือแบบUDP กับOreiented
+คือแบบTCPจะใช้อันไหนก็ขึ้นอยู่กับตัวapplication กระบวนการทำ itreative 
+คือเข้า queueเข้าไปจนกว่าจะreleaseส่วนกระบวนการทำConcurrent คือเปิดportทิ้งไว้แล้วหากมีclient
+ต้องการเข้ามาติดต่อก็จะfork()ตัวเองออกไปคุยส่วนตัวเองก็ไปทำงานอื่นต่อทำให้สามารถคุยได้ทีละหลายคน
+และหากว่าคุยกันเสร็จแล้วก็ทำการปิด Childprocessที่forkออกมาก็จะกลายเป็น Zombieรอการ KILL Process
+
+DNS (domain name system) 53
+เป็นการใช้ชื่อในการเข้าถึง internet แทนการใช้ Ip กรบวนการคือจะมีการเก็บการ maping ip กับชื่อไว้ที่DNS Client
+ซึ่งหากต้องการDNSที่ไม่ได้อยู่ในclient DNSClientก็จะส่งออกไปหา DNS Server
+โดยมีConceptคล้ายๆต้นไม้กลับหัว โครงสร้างคือจะขั้นด้วย .  โดยAdminสามารถassign Subdomain ไปให้
+Adminย่อยๆดูได้อีกทีโดนแบ่งเป็นZone ตามlabel และในความเป็นจริงแล้วDNS Serverไม่ได้มีตัวเดียวอาจจะ
+มีหลายตัวก็ได้คือ DNS Server forkตัวเองเป็น Slave
+กระบวนการได้มาซึ่งip คือผู้ใช้อยากได้เว็ปไซต์ABC.comก็เข้าไปที่Os'resolverๆก็จะส่งไปให้DNS server
+หาก DNS Serverไม่รู้ก็จะส่งไปถามRoot name server ไม่รู้แต่รู็ว่าหาได้จาก nameserverอันนึงก็จะ
+ส่งกลับมาให้ DNS server ๆก็ส่งไปถามnameserverอันนึงไปเรื่อยๆจนได้IPมาก็จส่งกลับไปให้computerที่ถาม
+DNS ใช้ตั้งแต่BIND nslookup ใช้ดู ipได้ dig ใช้ดูได้หลายตัว
+
+Telnet เน้นการส่งข้อมูลเป็นData set Character โดยถ้าจะRemote login ต้องวิ่งผ่านTerminal
+driver ผ่านTelnet client ผ่านinternet ผ่านServerแล้วค่อยเข้าAPP แต่มักมีปัญหาเรื่องCharacter set
+เวลาคุยกันข้ามinternetมักมีปัญหาด้านภาษาเลยใช้เป็นNVTเพื่อให้telnetคุยกันรู้เรื่อง จะเริ่มโดยการใช้IAC
+แต่จะมีปัญหาด้านการดักจับข้อมูลได้เพระาเป็น Character setปัจจุบันโดนบล๊อกport23แล้วเพราะไม่ปลอดภัย
+
+FTPจะใช้2 portคือ 20 คือไว้ใช้รับส่งdata ส่วน21ใช้controlการส่งข้อมูลเมื่อคุยกันเสร็จแล้วก็จะเปิดport21ทิ้งไว้
+คือการทำงานคือเปิดport 21ทิ้งไว้แล้วclientจะส่งportที่จะรับส่งข้อมูลมาให้port 20คุยกัน
+โดยแบ่งเป็น Active และ Passive Activeคือแบบปกติอาจจะโดนfirewallดักเอาไว้คือส่งไปเองแล้วก็ดักเอง
+และแบบ Passiveคือจะไม่คุยกับ20โดยตรงจะให้คุยกับportที่กำหนดให้ แต่ปัญหาคือ serverบางทีก็ไม่ยอม
+
+TFTP ต่อกันตรงๆไม่ซับซ้อนใชsubset command ของ FTP LightWeight ก็คือclient active port
+เดียวเลยแล้วคุยกันถ้าไม่ไปม่ถึงก็จะมีackให้สง่ใหม่
+
+HTTP TCP 80 ใช้tagเป็นหลักโดยมี Hypertextเป็นตัวสร้างภาษาโดยRequest และ Response ใช้ Mime format
+ก็จะมีหลายๆแบบ และมีเลขกำกับ3ตัวก็จะได้ข้อมูลมาเป็นtextแล้วจึงแปลงเป็นuiอีกที
+
+Electric mail มี protocol SMTPในการแลกเปลี่ยน Messageระหว่างserverกับCLient port25
+คือเป็นตัวหาเส้นทางในการส่งEMAIL ส่วนวิธีการส่งมักใช้ Store and forward โดยอาจจะมี mailgatewayฃ
+โดยทำเป็น Alias nameคือชื่อที่เพิ่มให้ไม่ซ้ำกับคนอื่นในdatabase ซึ่งalias nameนี้สามารถmap1to1 หรือ
+1tomanyได้
+
+DHCP คือการจ่าย IP ให้กับcomputer 
+SNMP ใช้ตรวจสอบ MAC Addressที่ต่ออยู่ UDP port 161 162
