@@ -1,0 +1,4 @@
+Lec 2
+DC = Datacenter
+DR = Disaster Recovery การ Recovery หลังจากเกิดปัญหา
+Risk Assesment ถ้ามีสูง DR ต้องมีอัตราสูงขึ้นตาม
