@@ -1,0 +1,5 @@
+Baymac
+Lec1 Homework  Beer 2.46, 2.64, 2.65, 2.71, 2.111, 2.125 Breadford 3.69, 3.80
+Lec2 Homework Nelson 4.4 4.13 4.19 Beer 3.3 3.23 Bedford
+Lec 3 Homework Beer 4.22 4.29 4.31 4.48 (*4.68*) 4.95 4.140(Momentรอบเส้น)
+Lec 4 Homework #4 Frame and Machine { BEER 6.75, 6.81, 6.88, 6.101, 6.122, 6.126, 6.145, 6.152, 6.173 }

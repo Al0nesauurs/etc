@@ -2,3 +2,7 @@ Lec 2
 DC = Datacenter
 DR = Disaster Recovery การ Recovery หลังจากเกิดปัญหา
 Risk Assesment ถ้ามีสูง DR ต้องมีอัตราสูงขึ้นตาม
+
+Stuxnet => worm 
+ใช้จัดการ nucler plant iran แต่มันสามารถทะลวงระบบควบคุมโรงงานอุตสาหกรรมอื่นๆได้หมด
+เป็น APT (Advance Persistent treat)
