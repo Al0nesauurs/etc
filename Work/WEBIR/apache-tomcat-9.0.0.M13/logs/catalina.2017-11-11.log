@@ -1,0 +1,48 @@
+11-Nov-2017 22:09:39.442 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/9.0.0.M13
+11-Nov-2017 22:09:39.456 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Nov 3 2016 20:59:41 UTC
+11-Nov-2017 22:09:39.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         9.0.0.0
+11-Nov-2017 22:09:39.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+11-Nov-2017 22:09:39.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+11-Nov-2017 22:09:39.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+11-Nov-2017 22:09:39.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_144\jre
+11-Nov-2017 22:09:39.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_144-b01
+11-Nov-2017 22:09:39.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+11-Nov-2017 22:09:39.458 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13
+11-Nov-2017 22:09:39.459 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13
+11-Nov-2017 22:09:39.459 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+11-Nov-2017 22:09:39.459 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+11-Nov-2017 22:09:39.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\conf\logging.properties
+11-Nov-2017 22:09:39.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+11-Nov-2017 22:09:39.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13
+11-Nov-2017 22:09:39.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13
+11-Nov-2017 22:09:39.461 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\temp
+11-Nov-2017 22:09:39.462 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library 1.2.10 using APR version 1.5.2.
+11-Nov-2017 22:09:39.462 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+11-Nov-2017 22:09:39.463 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+11-Nov-2017 22:09:40.124 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized (OpenSSL 1.0.2j  26 Sep 2016)
+11-Nov-2017 22:09:40.863 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+11-Nov-2017 22:09:41.034 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+11-Nov-2017 22:09:41.053 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+11-Nov-2017 22:09:41.056 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+11-Nov-2017 22:09:41.058 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 2260 ms
+11-Nov-2017 22:09:41.099 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+11-Nov-2017 22:09:41.101 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/9.0.0.M13
+11-Nov-2017 22:09:41.114 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\docs
+11-Nov-2017 22:09:41.637 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\docs has finished in 522 ms
+11-Nov-2017 22:09:41.638 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\examples
+11-Nov-2017 22:09:42.822 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\examples has finished in 1,184 ms
+11-Nov-2017 22:09:42.822 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\host-manager
+11-Nov-2017 22:09:42.885 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\host-manager has finished in 63 ms
+11-Nov-2017 22:09:42.885 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\manager
+11-Nov-2017 22:09:42.933 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\manager has finished in 48 ms
+11-Nov-2017 22:09:42.933 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\ROOT
+11-Nov-2017 22:09:42.962 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory W:\Git\etc\Work\WEBIR\apache-tomcat-9.0.0.M13\webapps\ROOT has finished in 29 ms
+11-Nov-2017 22:09:42.968 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+11-Nov-2017 22:09:42.977 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+11-Nov-2017 22:09:42.979 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1920 ms
+11-Nov-2017 22:13:43.046 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.reload Reloading context []
+11-Nov-2017 22:13:43.047 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+11-Nov-2017 22:13:43.115 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
+11-Nov-2017 22:13:53.120 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.reload Reloading context []
+11-Nov-2017 22:13:53.120 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] has started
+11-Nov-2017 22:13:53.143 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.core.StandardContext.reload Reloading Context with name [] is completed
