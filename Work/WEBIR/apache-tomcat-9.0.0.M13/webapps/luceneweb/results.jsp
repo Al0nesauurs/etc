@@ -57,11 +57,11 @@
              </p>
              <p>
                 Search method
-                <select id ="option">
-                        <option type="radio" name="type_search" value="Pagerank" id="option1" autocomplete="off" > Pagerank
-                        <option type="radio" name="type_search" value="Similarity" id="option2" autocomplete="off"> Similarity
-                        <option type="radio" name="type_search" value="Rerank" id="option3" autocomplete="off"> Rerank
-                </select>
+                <div >
+                        <input type="radio" name="type_search" value="Pagerank" id="option1" autocomplete="off" > Pagerank
+                        <input type="radio" name="type_search" value="Similarity" id="option2" autocomplete="off"> Similarity
+                        <input type="radio" name="type_search" value="Rerank" id="option3" autocomplete="off"> Rerank
+                </div>
                  <br></br>
                  <input name="maxresults" size="4" value="10"/>&nbsp;Results Per Page&nbsp;
                  <input type="submit" value="Search"/>
@@ -74,19 +74,8 @@
  String search_option_old = request.getParameter("type_search");
  %>
   <script>myval ="<%=search_option_old%>";</script>
-  <script>
-        document.addEventListener('DOMContentLoaded', function () {
-           var input = document.getElementById('option');
-           if (localStorage['option']) { // if option is set
-               input.value = localStorage['option']; // set the value
-           }
-           input.onchange = function () {
-                localStorage['option'] = this.value; // change localStorage on change
-            }
-        });
-    </script>
+
   <script type="text/javascript">
-      myval = localStorage.getItem('option')
       console.log(myval);
       if (myval == "Pagerank"){
           document.getElementById("option1").checked = true;
