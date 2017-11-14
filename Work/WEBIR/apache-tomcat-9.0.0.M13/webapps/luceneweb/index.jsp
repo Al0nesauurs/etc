@@ -19,21 +19,34 @@
 <% /* Author: Andrew C. Oliver (acoliver2@users.sourceforge.net) */ %>
 <img src = "Logo.jpg" style="width : 450px;  position:relative; left:32%"/>
 <center> 
-	<form name="search" action="results.jsp" method="get" style="left:30%">
-		<p>
-			<input name="query" size="44" placeholder="Type your document here..."/>&nbsp;
-		</p>
-		<p>
+    <form name="search" action="results.jsp" method="get" style="left:30%">
+        <p>
+            <input name="query" size="44" placeholder="Type your document here..."/>&nbsp;
+        </p>
+        <p>
             Search method
-            <select>
-                    <option value="volvo">Cosine Similarity</option>
-                    <option value="saab">Page rank</option>
-                    <option value="opel">Cosine Sim & PageRank</option>
+            <select id ="option">
+                    <option type="radio" name="type_search" value="Pagerank" id="option1" autocomplete="off" > Pagerank
+                    <option type="radio" name="type_search" value="Similarity" id="option2" autocomplete="off"> Similarity
+                    <option type="radio" name="type_search" value="Rerank" id="option3" autocomplete="off"> Rerank
             </select>
             <br></br>
-			<input name="maxresults" size="4" value="10"/>&nbsp;Results Per Page&nbsp;
-			<input type="submit" value="Search"/>
-		</p>
+            <input name="maxresults" size="4" value="10"/>&nbsp;Results Per Page&nbsp;
+            <input type="submit" value="Search"/>
+        </p>
     </form>
 </center>
+<script>
+       document.addEventListener('DOMContentLoaded', function () {
+          var input = document.getElementById('option');
+          if (localStorage['option']) { // if option is set
+              input.value = localStorage['option']; // set the value
+          }
+          input.onchange = function () {
+               localStorage['option'] = this.value; // change localStorage on change
+           }
+       });
+</script>
+
 <%@include file="footer.jsp"%>
+ 
