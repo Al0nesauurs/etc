@@ -50,30 +50,30 @@ Track&Field (1)
 		Database(3)
 		**********LAW(3)
 		Network(3)
-		**********Project-pre(2)
+		Project-pre(2)
 		**********Project(2)
 		GenElec I(3)
 		GenElec II(3)
-		**********BAYMAC (3)		
+		BAYMAC (3)		
 		SoftEng(4)		
 		EXEED(1)
 		LabGenElec(1)
-		**********Intern(-)
+		Intern(1)
 		Comsys(1)
 		LogicLab(1)
 		Practicum(1)
 		OOP(1)
 		Probsolve(1)
 	วิชาเฉพาะเลือก 18 หน่วยกิต
-		SocialDataMining
-		Enterprise
-		Gamedev
-		**********
-		**********
-		**********
+		SocialDataMining (3)
+		Enterprise (3)
+		Gamedev (3)
+		Advanced Network & network Configuration	(3)
+		Web Information Retrieval & Mining	(3)
+		Principle of Information Security	(3)
 
 หมวดวิชาเลือกเสรี ไม่น้อยกว่า 6 หน่วยกิต
 	Logic (3)
 	Philosophy (3)
 
-**********การฝึกงาน ไม่น้อยกว่า 240 ชั่วโมง (ไม่นับหน่วยกิต)
+การฝึกงาน ไม่น้อยกว่า 240 ชั่วโมง (ไม่นับหน่วยกิต)

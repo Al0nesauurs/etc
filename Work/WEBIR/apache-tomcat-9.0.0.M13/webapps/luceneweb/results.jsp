@@ -46,46 +46,86 @@
                                      
     }
  %>
- <div>
-     <a href="/luceneweb">
-     <img src = "Logo.jpg" style=" width: 180px; float: left; position:sticky" />
-     </a>
-     <form name="search" action="results.jsp" method="get" style=" float: none; width: auto; overflow: hidden;">
-         <div>
-             <p>
-                 <input name="query" size="44" placeholder="Type your document here..."/>&nbsp;
-             </p>
-             <p>
-                Search method
-                <div >
-                        <input type="radio" name="type_search" value="Pagerank" id="option1" autocomplete="off" > Pagerank
-                        <input type="radio" name="type_search" value="Similarity" id="option2" autocomplete="off"> Similarity
-                        <input type="radio" name="type_search" value="Rerank" id="option3" autocomplete="off"> Rerank
-                </div>
-                 <br></br>
-                 <input name="maxresults" size="4" value="10"/>&nbsp;Results Per Page&nbsp;
-                 <input type="submit" value="Search"/>
-           </p>
-         </div>
-     </form>
-     </div>
+ <div style=" position:fixed ;width:1600px; background-color:#C0C0C0; top:0%; left:0%; height:130px" >
+    <div style=" float: left; width: 200px; overflow: hidden; height:110px;">
+            
+    </div>
+    <div>
+      <a href="/luceneweb">
+        <img src = "Logo2.jpg" style="float: left;  margin-top: 20px;" width="180px" height="60px" align="middle"/>
+      </a>
+    </div>
+    <div style=" float: left; width: 50px; overflow: hidden; height:110px;">
+        
+    </div>
+    <form name="search" action="results.jsp" method="get" style=" float: none; width: auto; overflow: hidden; height:130px">
+        <div>
+            <p>
+                <input name="query" size="44" placeholder="Type your document here..."/>&nbsp;
+                <input type="submit" value="Search"/>
+                
+            </p>
+            <p>
+               Search method
+               <div >
+                       <input type="radio" name="type_search" value="Pagerank" id="option1" autocomplete="off" > Pagerank
+                       <input type="radio" name="type_search" value="Rerank" id="option2" autocomplete="off"> Rerank
+                       <input type="radio" name="type_search" value="Random" id="option3" autocomplete="off"> Random
+                       <input name="maxresults" size="4" value="10"/>&nbsp;Results Per Page&nbsp;
+               </div>
+                <br></br>
+          </p>
+        </div>
+    </form>
  </div>
+ <div style="height:130px"></div>
  <%
  String search_option_old = request.getParameter("type_search");
  %>
   <script>myval ="<%=search_option_old%>";</script>
-
   <script type="text/javascript">
-      console.log(myval);
-      if (myval == "Pagerank"){
-          document.getElementById("option1").checked = true;
+    function getCookie (cname) {
+      let name = cname + '='
+      let decodedCookie = decodeURIComponent(document.cookie)
+      let ca = decodedCookie.split(';')
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i]
+        while (c.charAt(0) === ' ') {
+          c = c.substring(1)
+        }
+        if (c.indexOf(name) === 0) {
+          return c.substring(name.length, c.length)
+        }
       }
-      else if(myval =="Similarity"){
-          document.getElementById("option2").checked = true;
+      return ''
+    }
+  </script>
+  <script type="text/javascript">
+    if (myval === null) {
+        myval = getCookie("option")
+    } else if (myval === 'Pagerank' || myval === 'Random' || myval === 'Rerank'){
+      document.cookie = 'option=' + myval + '; expires=Thu, 18 Dec 2018 12:00:00 UTC; path=/';
+      console.log(getCookie('option'))
+    }
+
+    if (myval == 'Pagerank') {
+        document.getElementById('option1').checked = true;
+    } else if (myval == 'Rerank') {
+        document.getElementById('option2').checked = true;
+    } else if(myval =='Random') {
+        document.getElementById('option3').checked = true;
+    }
+    else {
+        myval = getCookie('option')
+        console.log(myval)
+        if (myval == 'Pagerank'){
+          document.getElementById('option1').checked = true;
+        } else if(myval =='Rerank') {
+              document.getElementById('option2').checked = true;
+        } else if(myval =='Random') {
+        document.getElementById('option3').checked = true;
       }
-      else{
-          document.getElementById("option3").checked = true;
-      }
+    }
   </script>
  <%@include file="header.jsp"%>
  <%
@@ -161,7 +201,7 @@
                                                                        // searcher != null was to handle
                                                                        // a weird compilation bug 
                  thispage = maxpage;                                   // default last element to maxpage
-                 hits = searcher.search(query, maxpage + startindex);  // run the query 
+                 hits = searcher.search(query, 10000 + startindex);  // run the query 
                  if (hits.totalHits == 0) {                             // if we got no results tell the user
  %>
                  <p> I'm sorry I couldn't find what you were looking for. </p>
@@ -173,7 +213,10 @@
  
          if (error == false && searcher != null) {                   
  %>
- <div class="row" style="float:right; width : 80%; left: 20%">
+ <div class="row" style="float:right; width : 85%; left: 15%">
+    <td></td><td>Number of total page : <%=hits.totalHits%></td>
+ </div>
+ <div class="row" style="float:right; width : 85%; left: 15%">
      <table >
             <%
             if ((startindex + maxpage) > hits.totalHits) {
@@ -185,9 +228,10 @@
                 float Re_Rank;
                 float Sim_Rank;
                 Document Doc;
+                double score;
             };
             NewRank[] ranking = new NewRank[hits.totalHits];
-            for (int i = startindex; i < (thispage + startindex); i++) {
+            for (int i = startindex; i < (hits.totalHits); i++) {
                 Document doc = searcher.doc(hits.scoreDocs[i].doc);
                 float sim = hits.scoreDocs[i].score ;
                     float pagerank = 0.0f;
@@ -212,6 +256,20 @@
                     public int compare(NewRank n1, NewRank n2) {
                         return Float.compare(n2.Page_Rank, n1.Page_Rank);
                     }
+                });
+             } else if (search_option.equals("Rerank"))  {
+                Arrays.sort(ranking, new Comparator<NewRank>() {
+                    public int compare(NewRank n1, NewRank n2) {
+                        double score1 = 0, score2 = 0, omega = 0.5;
+                        try{
+                            score1 = omega*n1.score + (1-omega)*n1.Page_Rank;
+                            score2 = omega*n2.score + (1-omega)*n2.Page_Rank;
+                        } catch (Exception e) {
+                            System.out.println("Exception :" + e);
+                         }
+                        if (score1 < score2) return (1);
+                        else if (score1 == score2) return (0);
+                        else return (-1);                    }
                 });
              }
                 }
@@ -251,7 +309,7 @@
  
      <tr>
          <td><%=i+1%>&nbsp;&nbsp;</td><td><a href=<%="http://"+doc.get("html")%> style="color:blue;text-decoration: none;"><%=doctitle%></a></td>
-         <td> Page rank score : <%=pagerank%>  </td>
+         <td style = "width:180px"> Page rank score : <%=pagerank%>  </td>
      </tr>
      <tr>
          <td></td><td><a  style="color:green;text-decoration: none;"><%=html%></a></td>
